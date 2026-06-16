@@ -13,6 +13,16 @@ void messaging_requestNewWeatherData() {
   app_message_outbox_send();
 }
 
+void messaging_sendBatteryData(uint8_t batteryPercent, bool isCharging) {
+  DictionaryIterator *iter;
+  app_message_outbox_begin(&iter);
+
+  dict_write_uint8(iter, MESSAGE_KEY_BatteryPercent, batteryPercent);
+  dict_write_uint8(iter, MESSAGE_KEY_IsCharging, isCharging ? 1 : 0);
+
+  app_message_outbox_send();
+}
+
 void messaging_init(void (*processed_callback)(void)) {
   // register my custom callback
   message_processed_callback = processed_callback;
@@ -24,7 +34,7 @@ void messaging_init(void (*processed_callback)(void)) {
   app_message_register_outbox_sent(outbox_sent_callback);
 
   // Open AppMessage
-  app_message_open(512, 8);
+  app_message_open(512, 512);
 
   // APP_LOG(APP_LOG_LEVEL_DEBUG, "Watch messaging is started!");
   app_message_register_inbox_received(inbox_received_callback);
