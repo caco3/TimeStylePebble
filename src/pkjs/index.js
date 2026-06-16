@@ -1,4 +1,3 @@
-
 var weather = require('./weather');
 
 var CONFIG_VERSION = 10;
