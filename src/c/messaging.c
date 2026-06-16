@@ -15,7 +15,9 @@ void messaging_requestNewWeatherData() {
 
 void messaging_sendBatteryData(uint8_t batteryPercent, bool isCharging) {
   DictionaryIterator *iter;
-  app_message_outbox_begin(&iter);
+  if (app_message_outbox_begin(&iter) != APP_MSG_OK) {
+    return;
+  }
 
   dict_write_uint8(iter, MESSAGE_KEY_BatteryPercent, batteryPercent);
   dict_write_uint8(iter, MESSAGE_KEY_IsCharging, isCharging ? 1 : 0);
