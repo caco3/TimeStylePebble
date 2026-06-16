@@ -15,7 +15,7 @@ Inspired by the visual language of the Timeline found on the Pebble Time, TimeSt
 
 ## Want to try it?
 Download on the Pebble store at the link below:
-https://apps.rebble.io/en_US/application/55a5c024f4510f794c000071?section=watchfaces xxx
+[https://apps.repebble.com/ff9fb51545554a3197d047c4](https://apps.repebble.com/ff9fb51545554a3197d047c4)
 
 ## Building and Deploying
 
